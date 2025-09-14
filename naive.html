@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Classifier</title>
+</head>
+<body>
+    <h1>Naive Bayes Spam Classifier</h1>
+    <form action="/abc" method="post">
+        <textarea name="message" rows="5" cols="40" placeholder="Enter your message here"></textarea><br><br>
+        <input type="submit" value="Check">
+    </form>
+
+    {% if prediction_text %}
+        <h3>Input: {{ message }}</h3>
+        <h2>Result: {{ prediction}}</h2>
+    {% endif %}
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Height Prediction</title>
+    <style>
+        /* Page Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #6dd5fa, #2980b9);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Card Container */
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 380px;
+            animation: fadeIn 0.6s ease-in-out;
+            transition: transform 0.2s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Heading */
+        h1 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        /* Input Field */
+        input {
+            padding: 12px;
+            width: 85%;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+        }
+
+        /* Predict Button */
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(to right, #2980b9, #6dd5fa);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #2573a6, #57bde7);
+            transform: scale(1.05);
+        }
+
+        /* Prediction Result */
+        .result {
+            margin-top: 20px;
+            background: #eafaf1;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 5px solid #27ae60;
+            color: #2e7d32;
+            font-size: 18px;
+            font-weight: bold;
+            animation: slideUp 0.5s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Height Prediction</h1>
+        <form action="/predict" method="post">
+            <input type="number" name="weight" step="0.1" placeholder="Enter weight" required><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
